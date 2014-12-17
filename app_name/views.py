@@ -25,7 +25,8 @@ def register(request):
 @login_required
 def profile(request):
     if request.method == 'POST':
-        form = UserForm(request.POST, instance=request.user)
+        form = UserForm(request.POST, request.FILES, instance=request.user)
+        print request
         if form.is_valid():
             form.save()
             return redirect("/profile/")

@@ -1,6 +1,7 @@
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.test import TestCase
+from app_name.models import User
 from test_utils import run_pyflakes_for_package, run_pep8_for_package
 
 # Create your tests here.

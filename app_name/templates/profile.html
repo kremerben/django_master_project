@@ -1,5 +1,6 @@
 {% extends 'base_template.html' %}
 {% load crispy_forms_tags %}
+{% load staticfiles %}
 
 {% block title %}
     Profile
@@ -7,12 +8,26 @@
 
 
 {% block content %}
-
-    <h1>Edit your User Form</h1>
-    <form enctype="multipart/form-data" method="post">
-        {% csrf_token %}
-        {{ form|crispy }}
-        <input type="submit" value="Submit">
-    </form>
-
+<div class="row">
+    <div class="col-md-6 col-sm-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">Edit your User Form!</h2>
+                {% if user.image %}
+                    <div class="club_map">
+                        <img src="{% static user.image.url %}">
+                        <div style="clear: both"> </div>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="panel-body">
+                <form method="post" action="." enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock content %}
