@@ -1,0 +1,11 @@
+---
+
+virtualenv_path: "/home/ubuntu/.virtualenvs/blog_analytics"
+git_repo: https://github.com/kremerdesign/ru_blog_analytics.git
+project_name: rocketu_blog_analytics
+project_path: "/home/ubuntu/{{ project_name }}"
+requirements_file: "{{ project_path }}/requirements.txt"
+
+#su_username: kremerdesign
+#su_email: kremerdesign@gmail.com
+#su_password: blastoff

@@ -1,0 +1,17 @@
+#
+Django
+Pillow
+coverage
+dj-database-url
+dj-static
+django-crispy-forms
+django-debug-toolbar
+django-toolbelt
+djangorestframework
+gunicorn
+pep8
+psycopg2
+pyflakes
+sqlparse
+static3
+wsgiref

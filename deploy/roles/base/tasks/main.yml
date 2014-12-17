@@ -1,0 +1,24 @@
+---
+
+- name: Update and upgrade apt-get
+  apt: update_cache=yes upgrade=yes
+
+- name: Install base packages
+  apt: name={{ item }} state=installed
+  with_items:
+    - nginx
+    - emacs
+    - git
+    - python-pip
+    - python-dev
+    - build-essential
+    - supervisor
+  tags: packages
+
+- name: Latest version of pip
+  pip: name=pip state=latest
+  tags: packages
+
+- name: Latest version of virtualenv
+  pip: name=virtualenv state=latest
+  tags: packages

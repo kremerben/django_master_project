@@ -1,0 +1,10 @@
+[group:rocketu_blog_analytics]
+programs=gunicorn_{{ project_name }}
+
+[program:gunicorn_{{ project_name }}]
+command={{ virtualenv_path }}/bin/gunicorn -c gunicorn.conf.py -p gunicorn.pid wsgi:application --pythonpath {{ project_path }}/{{ project_name }}
+directory={{ project_path }}
+user=ubuntu
+autostart=true
+autorestart=true
+redirect_stderr=true

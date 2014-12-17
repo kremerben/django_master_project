@@ -1,0 +1,15 @@
+---
+
+db_name: "blog_analytics"
+
+db_user: "blog_analytics"
+db_password: blastoff
+
+nginx_server_name: "54.69.218.190"
+
+django_settings_file: rocketu_blog_analytics.settings
+
+#su_username: kremerdesign
+#su_email: kremerdesign@gmail.com
+#su_password: blastoff
+#

@@ -1,0 +1,25 @@
+---
+
+- name: Ensure gunicorn is installed
+  pip: virtualenv={{ virtualenv_path }} name=gunicorn
+
+- name: Create the Gunicorn conf file
+  template: src=gunicorn.conf.j2
+            dest={{ project_path }}/gunicorn.conf.py
+            owner=ubuntu
+            group=ubuntu
+            mode=0755
+  tags: gunicorn
+
+- name: Create the Supervisor conf file
+  template: src=supervisor.conf.j2
+            dest=/etc/supervisor/conf.d/{{ project_name }}.conf
+  tags: supervisor
+
+- name: Restart Supervisor
+  supervisorctl: name={{ project_name }} state=restarted
+  tags: restart_supervisor
+
+- name: Restart Supervisor Service
+  service: name=supervisor state=restarted
+  tags: restart_supervisor

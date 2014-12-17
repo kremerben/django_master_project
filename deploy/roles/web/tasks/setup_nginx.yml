@@ -1,0 +1,20 @@
+---
+
+- name: Create the Nginx configuration file
+  template: src=nginx_site_config.j2
+            dest=/etc/nginx/sites-available/{{ project_name }}
+  notify: reload nginx
+
+- name: Ensure that the default site is disabled
+  command: rm /etc/nginx/sites-enabled/default
+           removes=/etc/nginx/sites-enabled/default
+  notify: reload nginx
+
+- name: Ensure that the application site is enabled
+  command: ln -s /etc/nginx/sites-available/{{ project_name }}
+           /etc/nginx/sites-enabled/{{ project_name }}
+           creates=/etc/nginx/sites-enabled/{{ project_name }}
+  notify: reload nginx
+
+- name: Ensure Nginx service is started
+  service: name=nginx state=started enabled=yes

@@ -1,0 +1,12 @@
+---
+
+- name: Provision a RocketU Blog Analytics server
+  hosts: all
+  sudo: yes
+  sudo_user: root
+  roles:
+    - base
+    - db
+    - web
+  vars_files:
+    - env_vars/production.yml
