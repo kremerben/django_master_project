@@ -1,0 +1,27 @@
+{% extends 'base_template.html' %}
+{% load crispy_forms_tags static %}
+
+{% block title %}
+    Profile
+{% endblock title %}
+
+
+{% block content %}
+<div class="row">
+    <div class="col-md-6 col-sm-12">
+        {% if profile_user.image %}
+            <img src="{% static profile_user.image.url %}" class="img-rounded img-responsive">
+        {% endif %}
+    </div>
+    <div class="col-md-6 col-sm-12">
+        {% if user.is_authenticated and profile_user == user %}
+            <div class="pull-right"><a href="{% url 'profile_update' user %}">edit profile</a></div>
+        {% endif %}
+        <h1>{{ profile_user.first_name }}</h1>
+        {% if profile_user.about %}
+            <h2>{{ profile_user.about }}</h2>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock content %}
